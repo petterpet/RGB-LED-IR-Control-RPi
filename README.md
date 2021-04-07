@@ -9,7 +9,7 @@ Optimal: Zusätzlich kann ein IR-Receiver (an GPIO23) angeschlossen werden, um n
 #### Schaltplan
 ![Schaltplan](schematics.png)
 
-## Software
+## Software Vorbereitung
 - Paketquellen aktualisieren: `sudo apt update`
 
 #### LIRC installieren
@@ -56,3 +56,11 @@ Diese Schritte sind nötig:
 - Gespeicherte Buttons ausgeben: `irsend LIST rgbled ""`
 - Einzelne Codes senden: `irsend SEND_ONCE rgbled <Button-Name>` also z.B. `irsend SEND_ONCE rgbled ON`
 - Sollte das nicht funktionieren ist die Fernbedienungsconfig nicht geeignet, sodass die Fernbedienung manuell angelernt werden muss.
+
+## Python3 CLI
+`python3 rgb-led-ir-control.py`
+
+Das [Python-Programm](rgb-led-ir-control.py) ist nahezu selbsterklärend. Zunächst werden alle bekannten IR-Codes nummeriert ausgegeben. Anschließend kann der Benutzer fortlaufend die Nummer des Codes eingeben, der gesendet werden soll. Wird eine "0" eingeben, beendet sich das Programm.
+
+Intern führt das Programm den _irsend_-Befehl aus. \
+Somit kann es beliebig für weitere Fernbedienungen erweitert werden.
